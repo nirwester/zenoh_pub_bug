@@ -1,6 +1,7 @@
 find_package(ament_cmake_gtest REQUIRED)
 find_package(ament_cmake_ros REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(rcpputils REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
 
@@ -9,7 +10,7 @@ include("cmake/cm_add_isolated_gtest_with_command.cmake")
 
 ament_add_gtest_executable(test_pub_string test_pub_string.cpp)
 target_link_libraries(test_pub_string gtest_main)
-ament_target_dependencies(test_pub_string std_msgs std_srvs rclcpp)
+ament_target_dependencies(test_pub_string std_msgs std_srvs rclcpp rcpputils)
 
 cm_add_isolated_gtest_with_command(
   test_pub_string
@@ -24,4 +25,3 @@ cm_add_isolated_gtest_with_command(
     TEST_DIR=${TEST_DIR}
     TEST_LAUNCH_DIR=${TEST_LAUNCH_DIR}
     TEST_EXECUTABLE=$<TARGET_FILE:test_pub_string>)
-
